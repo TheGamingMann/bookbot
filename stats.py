@@ -16,3 +16,17 @@ def count_chars(text):
             count = 1
             chars[char] = count
     return chars
+
+def sort_on(items):
+    return items["num"]
+
+def sort_char_dict(dict):
+    sorted_chars = []
+    for k in dict:
+        char_count = {}
+        char_count["char"] = f"{k}"
+        char_count["num"] = dict[k]
+        sorted_chars.append(char_count)
+    sorted_chars.sort(reverse=True, key=sort_on)
+    return sorted_chars 
+    
