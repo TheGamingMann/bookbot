@@ -1,3 +1,4 @@
+import sys
 from stats import count_words
 from stats import count_chars
 from stats import sort_char_dict
@@ -17,12 +18,16 @@ def char_report(sorted_chars):
     return report
 
 def main():
-    file = "books/frankenstein.txt"
-    book = get_book_text(file)
-    word_count = count_words(book)
-    char_count = count_chars(book)
-    sorted_chars = sort_char_dict(char_count)
-    print(f"""============ BOOKBOT ============
+    if len(sys.argv) < 2:
+        print("Useage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    else:
+        file = sys.argv[1]
+        book = get_book_text(file)
+        word_count = count_words(book)
+        char_count = count_chars(book)
+        sorted_chars = sort_char_dict(char_count)
+        print(f"""============ BOOKBOT ============
 Analyzing book found at {file}...
 ----------- Word Count ----------
 Found {word_count} total words
